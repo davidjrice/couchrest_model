@@ -485,7 +485,7 @@ module CouchRest
             model = design_doc.model
 
             # Is this an all view?
-            if name.to_s == 'all'
+            if name.to_s == 'all' && !opts[:map]
               opts[:map] = <<-EOF
                 function(doc) {
                   if (doc['#{model.model_type_key}'] == '#{model.model_type_value}') {
